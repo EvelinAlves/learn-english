@@ -1,0 +1,11 @@
+.container {
+  margin-top: 50px;
+}
+
+h3.derrota {
+  color: red;
+}
+
+h3.vitoria {
+  color: green;
+}

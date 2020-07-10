@@ -1,11 +1,28 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <app-header></app-header>
-<app-painel></app-painel>
+<div *ngIf="jogoEmAndamento; else fimDeJogo">
+    <app-painel (encerrarJogo)="encerrarJogo($event)"></app-painel>
+</div>
+
+<ng-template #fimDeJogo>
+  <div *ngIf="tipoEncerramento === 'derrota'; else vitoria" class="container">
+    <div class="col">
+      <div class="row">
+        <h3 class="derrota">Fim de jogo! <br> Infelizmente você perdeu! :(</h3>
+      </div>
+    </div>
+  </div>
+  <ng-template #vitoria>
+    <div class="container">
+      <div class="col">
+        <div class="row">
+          <h3 class="vitoria">Fim de jogo! <br> Parabéns você ganhou! \o/</h3>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <div class="container">
+    <button class="btn btn-primary" (click)="reiniciarJogo()">Jogar novamente</button>
+  </div>
+</ng-template>
 
 <router-outlet></router-outlet>
